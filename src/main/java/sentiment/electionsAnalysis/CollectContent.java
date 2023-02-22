@@ -24,7 +24,7 @@ public class CollectContent {
 	public enum State {
 		California, Virginia, Texas, Georgia
 	}
-//no
+	
 	public static void main(String[] args) {
 
 		/*System.setProperty("webdriver.chrome.driver", "/Users/amy/Downloads/chromedriver_mac_arm64/chromedriver");
@@ -60,12 +60,13 @@ public class CollectContent {
 		//driver.close();
 		//driver.quit();*/
 		
-	 	//TextRetrieveProcess process2 = new TextRetrieveProcess();
+	 	TextRetrieveProcess process = new TextRetrieveProcess();
 		
-		//String[][] data = new String[285][2];
+		String[][] data = new String[272][2];
 		
-		//process2.readFile("TexasDemocratArticleLinks.txt", data);
-
+		process.readFile("VirginiaRepublicanArticleLinks.txt", data);
+		process.assignScore(data);
+		
 	}
 
 }

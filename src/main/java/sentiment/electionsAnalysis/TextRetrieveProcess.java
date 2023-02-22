@@ -1,6 +1,6 @@
 package sentiment.electionsAnalysis;
 
-import java.io.BufferedReader; 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -12,27 +12,47 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.openqa.selenium.WebElement;
 
+import com.vader.sentiment.analyzer.SentimentAnalyzer;
+import com.vader.sentiment.analyzer.SentimentPolarities;
+
 public class TextRetrieveProcess {
 	public TextRetrieveProcess() {
 
 	}
-	
-	public static void assignScore(List<String> urls) {
-		/*
-		try {
-			FileWriter writer = new FileWriter("TexasDemocratArticleLinks.txt");
 
-			for (String url : urls) {
-				writer.write(url + ", ");
-				writer.write(System.getProperty("line.separator"));
+	public static void assignScore(String[][] data) {
+		try {
+			FileWriter writerPos = new FileWriter("RepublicanDemocratPosScores.txt");
+			FileWriter writerNeg = new FileWriter("RepublicanDemocratNegScores.txt");
+			FileWriter writerNeu = new FileWriter("RepublicanDemocratNeuScores.txt");
+
+			for (int i = 0; i < data.length; i++) {
+				if (data[i][1] != null) {
+					final SentimentPolarities sentimentPolarities = SentimentAnalyzer.getScoresFor(data[i][1]);
+					writerPos.write(
+							sentimentPolarities.getPositivePolarity() + ",");
+					writerPos.write(System.getProperty("line.separator"));
+					
+					writerNeg.write(
+							sentimentPolarities.getNegativePolarity() + ",");
+					writerNeg.write(System.getProperty("line.separator"));
+					
+					writerNeu.write(
+							sentimentPolarities.getNeutralPolarity() + ",");
+					writerNeu.write(System.getProperty("line.separator"));
+				}
 			}
 
-			writer.close();
+			writerPos.close();
+			writerNeg.close();
+			writerNeu.close();
 
 		} catch (IOException e) {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
-		}*/
+		}
+		
+		System.out.println("done");
 
 	}
 

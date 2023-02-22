@@ -105,7 +105,7 @@
 	<classpathentry kind="lib" path="/Users/amy/Downloads/selenium-java-4.8.0/lib/reactive-streams-1.0.4.jar"/>
 	<classpathentry kind="lib" path="/Users/amy/Downloads/selenium-java-4.8.0/lib/slf4j-api-2.0.6.jar"/>
 	<classpathentry kind="lib" path="/Users/amy/Downloads/jar_files/commons-lang-2.6.jar"/>
-	<classpathentry kind="lib" path="/Users/amy/Downloads/jar_files/vader-sentiment-analyzer-1.0.jar"/>
 	<classpathentry kind="lib" path="/Users/amy/Downloads/jsoup-1.15.4.jar"/>
+	<classpathentry kind="lib" path="/Users/amy/Downloads/slf4j-simple-2.0.6.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
