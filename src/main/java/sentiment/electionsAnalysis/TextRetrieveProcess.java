@@ -20,6 +20,29 @@ public class TextRetrieveProcess {
 
 	}
 
+	public static double[] calculateAverage(double[] data) {
+		double counter = 0;
+		double sum = 0;
+		double smallest = data[0];
+		double largest = data[0];
+
+		for (int i = 1; i < data.length; i++) {
+			double newValue = data[i];
+			
+			if (smallest > newValue) {
+				smallest = newValue;
+			}
+			if(largest < newValue) {
+				largest = newValue;
+			}
+			
+			sum+=newValue;
+			counter++;
+		}
+
+		return new double[] { sum/counter, smallest, largest};
+	}
+
 	public static void assignScore(String[][] data) {
 		try {
 			FileWriter writerPos = new FileWriter("RepublicanDemocratPosScores.txt");
@@ -29,16 +52,13 @@ public class TextRetrieveProcess {
 			for (int i = 0; i < data.length; i++) {
 				if (data[i][1] != null) {
 					final SentimentPolarities sentimentPolarities = SentimentAnalyzer.getScoresFor(data[i][1]);
-					writerPos.write(
-							sentimentPolarities.getPositivePolarity() + ",");
+					writerPos.write(sentimentPolarities.getPositivePolarity() + ",");
 					writerPos.write(System.getProperty("line.separator"));
-					
-					writerNeg.write(
-							sentimentPolarities.getNegativePolarity() + ",");
+
+					writerNeg.write(sentimentPolarities.getNegativePolarity() + ",");
 					writerNeg.write(System.getProperty("line.separator"));
-					
-					writerNeu.write(
-							sentimentPolarities.getNeutralPolarity() + ",");
+
+					writerNeu.write(sentimentPolarities.getNeutralPolarity() + ",");
 					writerNeu.write(System.getProperty("line.separator"));
 				}
 			}
@@ -51,7 +71,7 @@ public class TextRetrieveProcess {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
 		}
-		
+
 		System.out.println("done");
 
 	}
